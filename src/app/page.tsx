@@ -1,15 +1,17 @@
 "use client"
 
-import { Box, Divider } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import HeaderArea from "./components/Header/HeaderArea";
 import TableArea from "./components/Table/TableArea";
 
 export default function Home() {
   return (
-    <Box className="overflow-hidden">
+    <Box className="flex flex-col min-h-screen">
       <HeaderArea />
-      <Divider className="m-4" borderWidth="2px" borderRadius="1px" />
+      <div className="h-0.5 mx-2 my-5 rounded-xl border-b-2"></div>
       <TableArea />
+      <Box className="bg-zinc-50 h-24 mb-0 border-t-2">
+      </Box>
     </Box>
   );
 }

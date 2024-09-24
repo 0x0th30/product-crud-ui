@@ -4,7 +4,7 @@ import TableHeader from "./TableHeader";
 
 export default function TableArea() {
   return (
-    <Box>
+    <Box className="flex-grow">
       <TableHeader />
       <Table />
     </Box>
