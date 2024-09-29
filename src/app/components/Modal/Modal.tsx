@@ -17,6 +17,7 @@ import {
   NumberInputField,
   NumberInputStepper,
 } from "@chakra-ui/react";
+import { createProduct } from "@/app/httpClient";
 
 export interface ModalProps {
   isOpen: any;
@@ -32,6 +33,7 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
   const onSubmit = (values: any) => {
     console.log(values);
+    createProduct(values.code, values.name, values.price, values.quantity);
   };
 
   return (

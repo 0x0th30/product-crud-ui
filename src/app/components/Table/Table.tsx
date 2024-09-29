@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 export interface TableProps {
-  data: Record<string, string>[];
+  data: any[];
 }
 
 export default function Table({ data }: TableProps) {
@@ -37,14 +37,17 @@ export default function Table({ data }: TableProps) {
           </Thead>
           <Tbody className="font-semibold text-zinc-400 overflow-auto">
             {data.map((element) => (
-              <Tr className="transition duration-200 hover:bg-zinc-100 hover:delay-50">
+              <Tr
+                key={element.code}
+                className="transition duration-200 hover:bg-zinc-100 hover:delay-50"
+              >
                 <Td py="12px">
                   <Checkbox />
                 </Td>
                 <Td className="font-extrabold text-zinc-600" py="12px">
                   {element.code}
                 </Td>
-                <Td py="12px">{element.name}</Td>
+                <Td py="12px">{element.title}</Td>
                 <Td py="12px">{element.price}</Td>
                 <Td py="12px">{element.quantity}</Td>
               </Tr>
