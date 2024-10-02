@@ -21,11 +21,17 @@ import { createProduct } from "@/app/httpClient";
 
 export interface ModalProps {
   isOpen: boolean;
+  onOpen: () => void;
   onClose: () => void;
-  setProducts: (x: any) => void;
+  setProducts: (products: any[] | ((products: any[]) => void)) => void;
 }
 
-export default function Modal({ isOpen, onClose, setProducts }: ModalProps) {
+export default function CreateModal({
+  isOpen,
+  onOpen,
+  onClose,
+  setProducts,
+}: ModalProps) {
   const {
     handleSubmit,
     register,

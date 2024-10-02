@@ -10,16 +10,27 @@ import Table from "./components/ProductsArea/Table";
 import Header from "./components/Header/Header";
 
 export default function Page() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [search, setSearch] = useState("");
+  const [file, setFile] = useState(undefined);
 
   useEffect(() => {
     listProducts(search).then((response) =>
-      setProducts(response.data.data.products),
+      setProducts(response.data.data.products)
     );
   }, [search]);
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: createProductsIsOpen,
+    onOpen: createProductsOnOpen,
+    onClose: createProductsOnClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: uploadFileIsOpen,
+    onOpen: uploadFileOnOpen,
+    onClose: uploadFileOnClose,
+  } = useDisclosure();
 
   return (
     <Box className="flex flex-col min-h-screen">
@@ -31,10 +42,19 @@ export default function Page() {
 
       <ProductsArea>
         <ActionBar
-          isOpen={isOpen}
-          onOpen={onOpen}
-          onClose={onClose}
-          setProducts={setProducts}
+          createProductsModalSettings={{
+            isOpen: createProductsIsOpen,
+            onOpen: createProductsOnOpen,
+            onClose: createProductsOnClose,
+            setProducts: setProducts as any,
+          }}
+          uploadFileModalSettings={{
+            isOpen: uploadFileIsOpen,
+            onOpen: uploadFileOnOpen,
+            onClose: uploadFileOnClose,
+            file,
+            setFile,
+          }}
         />
         <Table data={products} />
       </ProductsArea>

@@ -9,10 +9,18 @@ export const createProduct = (
   code: string,
   name: string,
   price: string,
-  quantity: string,
+  quantity: string
 ) =>
   axiosInstance.post("/api/v1/products", {
     code,
     title: name,
     price: Number(price),
   });
+
+export const uploadFile = (file: any) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("fileName", file.name);
+  const headers = { "content-type": "multipart/form-data" };
+  return axiosInstance.post("/api/v1/products/bulk", formData, { headers });
+};
