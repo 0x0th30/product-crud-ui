@@ -1,7 +1,17 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import { Box, Text, InputGroup, Input, InputRightElement, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  InputGroup,
+  Input,
+  InputRightElement,
+} from "@chakra-ui/react";
 
-export default function Header() {
+export interface HeaderProps {
+  setSearch: (keyword: string) => void;
+}
+
+export default function Header({ setSearch }: HeaderProps) {
   return (
     <Box className="flex flex-row justify-between items-center">
       <Box className="flex flex-row gap-3">
@@ -13,15 +23,14 @@ export default function Header() {
         </Text>
       </Box>
       <InputGroup size="md" maxWidth="50%">
-        <Input placeholder="Search product" />
+        <Input
+          placeholder="Search product"
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <InputRightElement>
-          <IconButton
-            bg="transparent"
-            aria-label="Search product"
-            icon={<SearchIcon />}
-          />
+          <SearchIcon />
         </InputRightElement>
       </InputGroup>
     </Box>
-  )
+  );
 }

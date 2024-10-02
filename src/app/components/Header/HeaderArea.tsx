@@ -1,10 +1,10 @@
 import { Box } from "@chakra-ui/react";
-import Header from "./Header";
+import { ReactElement } from "react";
 
-export default function HeaderArea() {
-  return (
-    <Box className="p-3 my-3">
-      <Header />
-    </Box >
-  )
+export interface HeaderAreaProps {
+  children: ReactElement | ReactElement[];
+}
+
+export default function HeaderArea({ children }: HeaderAreaProps) {
+  return <Box className="p-3 my-3">{children}</Box>;
 }

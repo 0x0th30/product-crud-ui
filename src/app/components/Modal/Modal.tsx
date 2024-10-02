@@ -20,11 +20,12 @@ import {
 import { createProduct } from "@/app/httpClient";
 
 export interface ModalProps {
-  isOpen: any;
-  onClose: any;
+  isOpen: boolean;
+  onClose: () => void;
+  setProducts: (x: any) => void;
 }
 
-export default function Modal({ isOpen, onClose }: ModalProps) {
+export default function Modal({ isOpen, onClose, setProducts }: ModalProps) {
   const {
     handleSubmit,
     register,
@@ -32,8 +33,12 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
   } = useForm();
 
   const onSubmit = (values: any) => {
-    console.log(values);
     createProduct(values.code, values.name, values.price, values.quantity);
+    setProducts((previousProducts: any[]) => [
+      ...previousProducts,
+      { code: values.code, title: values.name, price: values.price },
+    ]);
+    onClose();
   };
 
   return (
