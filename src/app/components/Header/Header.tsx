@@ -1,11 +1,6 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Text,
-  InputGroup,
-  Input,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { Box, InputGroup, Input, InputRightElement } from "@chakra-ui/react";
+import Counter from "./Counter";
 
 export interface HeaderProps {
   setSearch: (keyword: string) => void;
@@ -15,13 +10,10 @@ export default function Header({ setSearch }: HeaderProps) {
   return (
     <Box className="flex flex-row justify-between items-center">
       <Box className="flex flex-row gap-3">
-        <Text className="font-md text-zinc-400">
-          Products: <span className="font-bold text-zinc-600">5</span>
-        </Text>
-        <Text className="font-md text-zinc-400">
-          No stock: <span className="font-extrabold text-zinc-600">1</span>
-        </Text>
+        <Counter label="Products:" value={5} />
+        <Counter label="No stock:" value={5} />
       </Box>
+
       <InputGroup size="md" maxWidth="50%">
         <Input
           placeholder="Search product"

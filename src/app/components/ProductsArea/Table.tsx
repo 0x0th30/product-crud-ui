@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 export interface TableProps {
-  data: any[];
+  data: ProductCollection;
 }
 
 export default function Table({ data }: TableProps) {
@@ -47,7 +47,7 @@ export default function Table({ data }: TableProps) {
                 <Td className="font-extrabold text-zinc-600" py="12px">
                   {element.code}
                 </Td>
-                <Td py="12px">{element.title}</Td>
+                <Td py="12px">{element.name || element.title}</Td>
                 <Td py="12px">{element.price}</Td>
                 <Td py="12px">{element.quantity}</Td>
               </Tr>
