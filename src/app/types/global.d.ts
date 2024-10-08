@@ -13,7 +13,7 @@ declare global {
   type ProductsRequest = {
     page: number;
     limit: number;
-    search?: string;
+    keyword?: string;
   };
 
   type UploadFileResponse = {

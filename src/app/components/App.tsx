@@ -9,7 +9,6 @@ import Table from "./ProductsArea/Table";
 import Header from "./Header/Header";
 import { FieldValues } from "react-hook-form";
 import { productsController } from "../controllers/products";
-import { uploadFile } from "../services/httpClient";
 
 export default function App() {
   const [products, setProducts] = useState<ProductCollection>([]);
@@ -32,7 +31,10 @@ export default function App() {
       .catch((error) => console.log(error));
   };
 
-  const onSubmitUploadFile = () => uploadFile(file!);
+  const onSubmitUploadFile = () => {
+    if (!file) return;
+    productsController.uploadFile(file);
+  };
 
   const onChangeFile = (event: FormEvent) =>
     setFile((event.target as HTMLInputElement).files![0]);
