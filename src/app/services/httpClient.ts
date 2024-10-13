@@ -35,3 +35,13 @@ export const uploadFile = (file: File): Promise<UploadFileResponse> => {
     throw new Error();
   });
 };
+
+export const deleteProducts = (deleteProductsRequest: DeleteProductsRequest): Promise<string[]> => {
+  const path = "/products";
+
+  return axiosInstance.delete(path, { data: deleteProductsRequest }).then((response) => {
+    if (response.status === 200) return deleteProductsRequest.codes;
+    throw new Error();
+  });
+};
+

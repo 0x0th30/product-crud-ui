@@ -1,4 +1,4 @@
-export {};
+export { };
 
 declare global {
   type Product = {
@@ -20,4 +20,8 @@ declare global {
     taskId: string;
     enqueuedProducts: number;
   };
+
+  type DeleteProductsRequest = {
+    codes: string[]
+  }
 }

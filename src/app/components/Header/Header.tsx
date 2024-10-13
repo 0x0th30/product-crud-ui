@@ -1,5 +1,5 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import { Box, InputGroup, Input, InputRightElement } from "@chakra-ui/react";
+import { Box, InputGroup, Input, InputRightElement, Button } from "@chakra-ui/react";
 import Counter from "./Counter";
 
 export interface HeaderProps {
@@ -20,9 +20,12 @@ export default function Header({ setSearch }: HeaderProps) {
           onChange={(e) => setSearch(e.target.value)}
         />
         <InputRightElement>
-          <SearchIcon />
+          <Button variant="link">
+            <SearchIcon />
+          </Button>
         </InputRightElement>
       </InputGroup>
     </Box>
+
   );
 }

@@ -1,6 +1,7 @@
 import { FieldValues } from "react-hook-form";
 import * as httpClient from "../services/httpClient";
 import {
+  fromInputToDeleteProductsRequest,
   fromInputToProduct,
   fromInputToProductsRequest,
 } from "../adapters/products";
@@ -25,4 +26,10 @@ function uploadFile(file: File) {
   return httpClient.uploadFile(file);
 }
 
-export const productsController = { createProduct, listProducts, uploadFile };
+function deleteProducts(codes: string[]) {
+  const deleteProductsBody = fromInputToDeleteProductsRequest(codes);
+
+  return httpClient.deleteProducts(deleteProductsBody);
+}
+
+export const productsController = { createProduct, listProducts, uploadFile, deleteProducts };

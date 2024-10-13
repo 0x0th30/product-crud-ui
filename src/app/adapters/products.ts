@@ -20,3 +20,7 @@ export function fromInputToProductsRequest(
     keyword: search && search.length > 0 ? search : undefined,
   };
 }
+
+export function fromInputToDeleteProductsRequest(codes: string[]): DeleteProductsRequest {
+  return { codes };
+}

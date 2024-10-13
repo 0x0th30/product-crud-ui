@@ -39,6 +39,12 @@ export default function App() {
   const onChangeFile = (event: FormEvent) =>
     setFile((event.target as HTMLInputElement).files![0]);
 
+  const handleDelete = (codes: string[]) => {
+    productsController.deleteProducts(codes)
+      .then(() => setProducts((previous) => previous.filter((e) => !codes.includes(e.code))))
+      .catch((error) => console.log(error));
+  }
+
   return (
     <Box className="flex flex-col min-h-screen">
       <HeaderArea>
@@ -53,7 +59,7 @@ export default function App() {
           onSubmitUploadFile={onSubmitUploadFile}
           onChangeUploadFile={onChangeFile}
         />
-        <Table data={products} />
+        <Table data={products} handleDelete={handleDelete} />
       </ProductsArea>
       <Box className="bg-zinc-50 h-24 mb-0 border-t-2"></Box>
     </Box>
