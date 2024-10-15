@@ -117,20 +117,21 @@ export default function ActionBar({
       <Modal
         title="Upload file to bulk creation"
         body={
-          <>
-            <br />
+          <Box className="flex flex-col gap-4 text-zinc-500">
             <Text>Upload a CSV file to create multiple products from it.</Text>
-            <br />
 
             <form onSubmit={uploadFileHandleSubmit(onSubmitUploadFile)}>
-              <input type="file" onChange={onChangeUploadFile} />
+              <Box>
+                <input type="file" onChange={onChangeUploadFile} />
+              </Box>
 
+              <br />
               <Button onClick={uploadFileOnClose}>Cancel</Button>
               <Button onClick={uploadFileOnClose} type="submit" variant="ghost">
                 Confirm
               </Button>
             </form>
-          </>
+          </Box>
         }
         isOpen={uploadFileIsOpen}
         onClose={uploadFileOnClose}
